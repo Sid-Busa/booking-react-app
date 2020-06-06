@@ -1,0 +1,2 @@
+export const FLIGHT_DETAILS = "FLIGHT_DETAILS";
+export const BOOKING_DETAILS = "BOOKING_DETAILS";

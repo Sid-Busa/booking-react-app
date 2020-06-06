@@ -1,0 +1,26 @@
+.cabboLogo {
+    max-width: 100% ;
+    height: 70px;
+}
+.verticalLine {
+    border-left:  2px solid #DBB7EF ;
+    height:  50px ;
+}
+.borgoLogo {
+    max-width:  100% ;
+    height:  70px ;
+}
+.menuItem{
+    background-size: 'cover';
+    min-width:  80px ;
+    text-align:  center ;
+    color:  #fff ;
+    margin-left:  10px ;
+    margin-right:  10px ;
+    background-color:  #888B8D ;
+    border-radius:  20px ;
+}
+.menuItem:hover{
+    cursor: pointer ;
+    background-color:  #c0c0c0 
+}
