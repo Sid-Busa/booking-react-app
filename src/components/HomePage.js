@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { makeStyles } from '@material-ui/core/styles';
 import {
   Grid,
@@ -16,7 +16,6 @@ import {
   KeyboardDatePicker,
 } from '@material-ui/pickers';
 import DateFnsUtils from '@date-io/date-fns';
-import Slider from 'infinite-react-carousel';
 import RadioButtonUncheckedIcon from '@material-ui/icons/RadioButtonUnchecked';
 import RadioButtonCheckedIcon from '@material-ui/icons/RadioButtonChecked';
 import AddIcon from '@material-ui/icons/Add';
@@ -26,24 +25,14 @@ import Spinner from '../assets/spinner.svg';
 import Airport from '../assets/plane.svg';
 import Rent from '../assets/rent.svg';
 import Train from '../assets/train.svg';
-import Port from '../assets/port.svg';
 
 import { submitFlightData } from '../store/actions/flightActions';
-
-import OwlCarousel from 'react-owl-carousel';
 import 'owl.carousel/dist/assets/owl.carousel.css';
 import 'owl.carousel/dist/assets/owl.theme.default.css';
 
 import GooglePlacesAutocomplete from 'react-google-places-autocomplete';
 // If you want to use the provided css
 // import 'react-google-places-autocomplete/dist/index.min.css';
-
-import imgOverView1 from '../assets/imgOverView1.jpg';
-import imgOverView2 from '../assets/imgOverView2.jpg';
-import imgOverView3 from '../assets/imgOverView3.jpg';
-import imgOverView4 from '../assets/imgOverView4.jpg';
-import imgOverView5 from '../assets/imgOverView5.jpg';
-import imgOverView6 from '../assets/imgOverView6.jpg';
 import imgOverView7 from '../assets/imgOverView7.jpg';
 
 const useStyles = makeStyles((theme) => ({
@@ -255,6 +244,7 @@ const useStyles = makeStyles((theme) => ({
     paddingBottom: '10px',
     backgroundColor: '#F4A460'
   },
+ 
 }));
 
 function HomePage(props) {
@@ -280,10 +270,6 @@ function HomePage(props) {
     setSelectedDate(date);
   };
 
-  const carouselSettings = {
-    arrows: false,
-    slidesToShow: 5,
-  };
 
   const submitData = () => {
     let data = {
@@ -368,7 +354,7 @@ function HomePage(props) {
           </div>
         </Grid>
         <Grid item md={9} container>
-          <Grid item md={9}>
+          <Grid item md={9} className={classes.animatedText}>
             <Typography variant='h4' className={classes.mainContainerTitle}>
               Your transfer service in Puglia, between Borgo Egnazia and the
               main hubs.

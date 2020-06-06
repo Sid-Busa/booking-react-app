@@ -1,12 +1,13 @@
 import React from "react";
 import { withStyles, Card, CardContent, CardActions, Button, Grid, Typography, FormControl } from "@material-ui/core";
 import RadioButtonUncheckedIcon from "@material-ui/icons/RadioButtonUnchecked";
-import RadioButtonCheckedIcon from "@material-ui/icons/RadioButtonChecked";
 import AddIcon from "@material-ui/icons/Add";
 import RemoveIcon from "@material-ui/icons/Remove";
 import CloseIcon from "@material-ui/icons/Close";
 import DateFnsUtils from "@date-io/date-fns";
+import LocationOnOutlinedIcon from '@material-ui/icons/LocationOnOutlined';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
+import CircularProgress from '@material-ui/core/CircularProgress';
 import KeyboardArrowDownIcon from '@material-ui/icons/KeyboardArrowDown';
 import { MuiPickersUtilsProvider, KeyboardTimePicker, KeyboardDatePicker } from "@material-ui/pickers";
 import { Style } from "./BookingForm.style";
@@ -34,6 +35,7 @@ const BookingForm = ({
   handleTimeChange,
   customForm,
   details,
+  loader,
   handleClose,
 }) => {
   passengers = passengers || 0;
@@ -68,7 +70,7 @@ const BookingForm = ({
             <FormControl className={classes.formControl} style={{ width: "100%" }}>
               <Grid container>
                 <Grid item md={1} container alignItems="center" justify="center">
-                  <RadioButtonCheckedIcon style={{ fontSize: "10px" }} className={classes.iconForCheck2}/>
+                  <LocationOnOutlinedIcon style={{ fontSize: "20px" }} className={classes.iconForCheck2}/>
                 </Grid>
                 <Grid item md={11} container alignItems="center">
                   <AutoCompletePlaces
@@ -89,7 +91,7 @@ const BookingForm = ({
                 <KeyboardDatePicker
                   disableToolbar
                   variant="inline"
-                  format="dd/MM"
+                  format="dd/MM/yyyy"
                   margin="normal"
                   id="date-picker-inline"
                   label="Pickup Date"
@@ -179,7 +181,7 @@ const BookingForm = ({
         <Grid container justify="center">
           <Grid item md={12}>
             <Button onClick={submitData} className={classes.bookBtn}>
-              {customForm === "editForm" ? "Submit" : customForm === "editTransfer" ? "Submit" : "Book Now"}
+              {loader ? <CircularProgress style={{color:'white'}} disableShrink /> : customForm === "editForm" ? "Submit" : customForm === "editTransfer" ? "Submit" : "Book Now"}
             </Button>
           </Grid>
         </Grid>

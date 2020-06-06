@@ -125,4 +125,23 @@ export const Style = (theme) => ({
     height:"100vh",
     width: "100%",
   },
+  animatedText :{
+    coler:'red',
+    animation: `$myEffect 3000ms ${theme.transitions.easing.easeInOut}`
+  },
+  "@keyframes myEffect": {
+    "0%": {
+      opacity: 0,
+      transform: "translateX(-10%)"
+    },
+    "100%": {
+      opacity: 1,
+      transform: "translateX(0)"
+    }
+  },
+  headerIcon : {
+    ['@media (max-width:960px)']: { // eslint-disable-line no-useless-computed-key
+      display:'none'
+    }
+  }
 });

@@ -14,7 +14,7 @@ import { TextareaAutosize } from "@material-ui/core";
 import { getCarsFromPassengerNumber } from "../helpers/car";
 import BookingForm from "../components/BookingForm";
 import OrderSummary from "../components/OrderSummary";
-
+import './style.css'
 const useStyles = makeStyles((theme) => ({
   imgFluid: {
     maxWidth: "100%",

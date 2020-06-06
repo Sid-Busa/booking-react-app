@@ -30,8 +30,8 @@ const AutoCompletePlaces = ({ classes, address, handlePlaceChange, handlePlaceSe
                 {suggestions &&
                   suggestions.map((suggestion) => {
                     const style = suggestion.active
-                      ? { backgroundColor: "#fafafa", cursor: "pointer" }
-                      : { backgroundColor: "#ffffff", cursor: "pointer" };
+                      ? { backgroundColor: "#fafafa", cursor: "pointer",width:"100%" }
+                      : { backgroundColor: "#ffffff", cursor: "pointer",width:"100%" };
                     return (
                       <div
                         {...getSuggestionItemProps(suggestion, {

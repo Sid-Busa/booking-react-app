@@ -156,11 +156,11 @@ const SingleOrder = ({ classes, id, date, time, passengers, from, to, luggages, 
                   </div>
                 ))
               )}
-              <div>
+              <div style={{ marginLeft: "15px" }}>
                 <PersonOutlineOutlinedIcon style={{ color: "gray" }} />
               </div>
               <span style={{ marginLeft: "10px" }}>{passengers}</span>
-              <div style={{ marginLeft: "30px" }}>
+              <div style={{ marginLeft: "15px" }}>
                 <LocalMallOutlinedIcon style={{ color: "gray" }} />
               </div>
               <span style={{ marginLeft: "10px" }}>{luggages}</span>

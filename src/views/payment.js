@@ -1,6 +1,8 @@
 import React, { useEffect } from "react";
-import { Grid, Typography, Card, CardContent, CardActions, Button, TextField, FormControlLabel, Checkbox, Modal } from "@material-ui/core";
+import { Grid, Typography, Card, CardContent, CardActions, Button, TextField, FormControlLabel, Checkbox, Modal,Dialog,DialogTitle,DialogContent } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
+import useMediaQuery from '@material-ui/core/useMediaQuery';
+import { useTheme } from '@material-ui/core/styles';
 import { useDispatch, useSelector } from "react-redux";
 import CheckCircleIcon from "@material-ui/icons/CheckCircle";
 import { geocodeByAddress, getLatLng } from "react-places-autocomplete";
@@ -12,6 +14,7 @@ import OrderSummary from "../components/OrderSummary";
 import Airport from "../assets/plane.svg";
 import Rent from "../assets/rent.svg";
 import Train from "../assets/train.svg";
+import './style.css'
 const useStyles = makeStyles((theme) => ({
   imgFluid: {
     maxWidth: "100%",
@@ -314,7 +317,8 @@ function Payment() {
   const submit = () => {
     dispatch(submitBookingDetails(data));
   };
-
+  const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
   let details = JSON.parse(localStorage.getItem("details"));
   let allDetails = JSON.parse(localStorage.getItem("allDetails"));
 
@@ -427,12 +431,13 @@ function Payment() {
         <Grid container md={8} spacing={2} alignItems="flex-start">
           <Grid item md={6} container>
             <OrderSummary details={details} handleOpen={handleExtraOpen} payment={true} allDetails={allDetails} deleteData={deleteData} />
-            <Modal
+            <Dialog 
               open={IsExtraOpen}
-              onClose={handleExtraClose}
-              aria-labelledby="simple-modal-title-two"
-              aria-describedby="simple-modal-description-two"
+              onClose={handleExtraClose} 
+              style={{width:"100%"}}
+              fullWidth={true}
             >
+              <DialogContent onClose={handleClose} style={{marginTop:5}}>
               <div className={classes.popUp}>
                 <BookingForm
                   customForm="extraTransfer"
@@ -458,7 +463,8 @@ function Payment() {
                   submitData={submitData}
                 />
               </div>
-            </Modal>
+              </DialogContent>
+            </Dialog>
           </Grid>
           <Grid item md={6} container>
             <Grid style={{ position: "relative", paddingBottom: "20px" }} item md={12}>

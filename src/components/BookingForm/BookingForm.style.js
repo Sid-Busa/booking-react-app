@@ -1,8 +1,9 @@
 export const Style = (theme) => ({
   bookTransferCard: {
-    borderRadius: "20px",
+    borderRadius: "4px",
     padding: theme.spacing(2),
     position:"relative",
+    boxShadow:"0px 0px 6px white",
     top:"-40px",
     ['@media (max-width:960px)']: { // eslint-disable-line no-useless-computed-key
       position:"relative",
@@ -89,10 +90,11 @@ export const Style = (theme) => ({
     }
   },
   iconForCheck2 : {
+    color:"#888888",
     ['@media (max-width:960px)']: { // eslint-disable-line no-useless-computed-key
       position:"absolute",
-      top:"18px",
-      left:'2px',
+      top:"14px",
+      left:'-4px',
     }
   },
   arrowDot:{
@@ -100,6 +102,16 @@ export const Style = (theme) => ({
     top:'120px',
     left:'42px',
     color:"#888888",
+    ['@media (max-width:1500px)']: { // eslint-disable-line no-useless-computed-key
+      position:"absolute",
+      top:"120px",
+      left:'42px',
+    },
+    ['@media (max-width:1000px)']: { // eslint-disable-line no-useless-computed-key
+      position:"absolute",
+      top:"120px",
+      left:'37px',
+    },
     ['@media (max-width:960px)']: { // eslint-disable-line no-useless-computed-key
       position:"absolute",
       top:"117px",
@@ -111,11 +123,21 @@ export const Style = (theme) => ({
     top:'132px',
     left:'42px',
     color:"#888888",
+    ['@media (max-width:1500px)']: { // eslint-disable-line no-useless-computed-key
+      position:"absolute",
+      top:"131px",
+      left:'42px',
+    },
+    ['@media (max-width:1000px)']: { // eslint-disable-line no-useless-computed-key
+      position:"absolute",
+      top:"131px",
+      left:'37px',
+    },
     ['@media (max-width:960px)']: { // eslint-disable-line no-useless-computed-key
       position:"absolute",
       top:"131px",
       left:'35px',
-    }
+    },
   }
 
 });

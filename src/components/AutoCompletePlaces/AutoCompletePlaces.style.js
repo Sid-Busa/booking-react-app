@@ -9,7 +9,7 @@ export const Style = (theme) => ({
       border: 0,
       padding: 0,
       "& legend": {
-        width: "62px",
+        width: "100%",
       },
     },
     "& input": {
@@ -21,13 +21,14 @@ export const Style = (theme) => ({
     position: "absolute",
     backgroundColor: "#fff !important",
     zIndex: 999,
-    width: 230,
+    width:"93%",  
     // boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
   },
   suggestion: {
     display: "flex",
     alignItems: "center",
     justifyContent: "flex-start",
+    width:"93%"
     // "& img": {
     //   width: "50px",
     //   height: "50px",
@@ -35,6 +36,7 @@ export const Style = (theme) => ({
   },
   suggestionText: {
     fontSize: "12px",
-    width: "80%",
+    width: "90%",
+    padding:5
   },
 });

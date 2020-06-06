@@ -5,19 +5,16 @@ import BookingForm from "../../components/BookingForm";
 import { Style } from "./HomePage.style";
 import HomePageHeader from "../../layout/HomePageHeader";
 import { geocodeByAddress, getLatLng } from "react-places-autocomplete";
-
 import Airport from "../../assets/plane.svg";
 import Rent from "../../assets/rent.svg";
 import Train from "../../assets/train.svg";
 import Port from "../../assets/port.svg";
+import PermPhoneMsgOutlinedIcon from '@material-ui/icons/PermPhoneMsgOutlined';
+import AirplanemodeActiveOutlinedIcon from '@material-ui/icons/AirplanemodeActiveOutlined';
+import CommuteOutlinedIcon from '@material-ui/icons/CommuteOutlined';
 import { submitFlightData } from "../../store/actions/flightActions";
-import imgOverView1 from "../../assets/imgOverView1.jpg";
-import imgOverView2 from "../../assets/imgOverView2.jpg";
-import imgOverView3 from "../../assets/imgOverView3.jpg";
-import imgOverView4 from "../../assets/imgOverView4.jpg";
-import imgOverView5 from "../../assets/imgOverView5.jpg";
-import imgOverView6 from "../../assets/imgOverView6.jpg";
-import imgOverView7 from "../../assets/imgOverView7.jpg";
+import mainImage from "../../assets/mainImage.png";
+
 
 class HomePage extends Component {
   state = {
@@ -33,6 +30,7 @@ class HomePage extends Component {
       Passengers: 0,
       Luggages: 0,
     },
+    isLoding : false
   };
 
   handleDateChange = (date) => {
@@ -85,9 +83,17 @@ class HomePage extends Component {
     // };
     // console.log(data);
     // dispatch(submitFlightData(data));
-    localStorage.setItem("details", JSON.stringify(this.state.TripDetails));
-    localStorage.setItem("allDetails", JSON.stringify([{ id: Math.random(), ...this.state.TripDetails }]));
-    this.props.history.push("transfer");
+    this.setState({
+      isLoding: true
+    })
+    setTimeout(() => {
+      this.setState({
+        isLoding: false
+      })
+      localStorage.setItem("details", JSON.stringify(this.state.TripDetails));
+      localStorage.setItem("allDetails", JSON.stringify([{ id: Math.random(), ...this.state.TripDetails }]));
+      this.props.history.push("transfer");
+    },1000)
   };
 
   fetchLocationIcon = (location) => {
@@ -170,17 +176,27 @@ class HomePage extends Component {
         <Grid container justify="center" alignItems="center" className={classes.mainContainer}>
           <Grid item xs={12} className={classes.owlTheme} margin={10}>
             <div class="item" className={classes.imgContainer}>
-               <img className={classes.owlImage} src={imgOverView7} alt="Scenery" />
+               <img className={classes.owlImage} src={mainImage} alt="Scenery" />
             </div>
           </Grid>
-          <Grid item xs={9} container style={{position:'absolute',top:"30%"}}>
-            <Grid item sm={12} md={7} >
+          <Grid item xs={9} container  style={{position:'absolute',top:"20%"}}>
+            <Grid item sm={12} md={7} className={classes.animatedText} >
               <Typography variant="h4" className={classes.mainContainerTitle} style={{justifyContent:'center'}}>
                 Your transfer service in Puglia, between Borgo Egnazia and the main hubs.
               </Typography>
               <Typography variant="h3" className={classes.mainContainerSubTitle}>
-                Ride in safety and style!
+                Ride in safety and style! 
               </Typography>
+              <span>
+                <CommuteOutlinedIcon style={{fontSize:'40px',backgroundColor:'white',padding:10,borderRadius:"50%",margin:"0px 40px"}} className={classes.headerIcon} />
+              </span>
+              <span>
+                  <PermPhoneMsgOutlinedIcon style={{fontSize:'40px',fontWeight:'100px',backgroundColor:'white',padding:10,borderRadius:"50%",margin:"0px 40px"}}  className={classes.headerIcon} />
+              </span>
+              <span>
+                <AirplanemodeActiveOutlinedIcon style={{fontSize:'40px',backgroundColor:'white',padding:10,borderRadius:"50%",margin:"0px 40px"}} className={classes.headerIcon} />
+              </span>
+
             </Grid>
             <Grid item sm={12} md={5} >
             <BookingForm
@@ -202,6 +218,7 @@ class HomePage extends Component {
               handlePassengerAdd={this.handlePassengerAdd}
               handleLuggagesAdd={this.handleLuggagesAdd}
               submitData={this.submitData}
+              loader={this.state.isLoding}
             />
           </Grid>
           </Grid>
