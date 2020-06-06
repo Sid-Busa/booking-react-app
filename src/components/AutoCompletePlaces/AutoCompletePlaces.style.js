@@ -37,6 +37,6 @@ export const Style = (theme) => ({
   suggestionText: {
     fontSize: "12px",
     width: "90%",
-    padding:5
+    padding:4
   },
 });
