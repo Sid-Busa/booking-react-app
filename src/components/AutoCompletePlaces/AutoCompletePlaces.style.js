@@ -20,7 +20,7 @@ export const Style = (theme) => ({
   dropDownContainer: {
     position: "absolute",
     backgroundColor: "#fff !important",
-    zIndex: 999,
+    zIndex:1000,
     width:"93%",  
     // boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)",
   },
