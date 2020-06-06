@@ -11,11 +11,7 @@ export const Style = (theme) => ({
       "& legend": {
         width: "100%",
       },
-    },
-    "& input": {
-      //   color: theme.palette.primary.dark,
-      //   fontSize: 15,
-    },
+    
   },
   dropDownContainer: {
     position: "absolute",
