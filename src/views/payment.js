@@ -124,6 +124,7 @@ const useStyles = makeStyles((theme) => ({
     alignItems: "center",
     justifyContent: "center",
     height: "100%",
+    paddingTop:"25px"
   },
 }));
 
@@ -434,12 +435,12 @@ function Payment() {
             <Dialog 
               open={IsExtraOpen}
               onClose={handleExtraClose} 
-              style={{width:"100%"}}
-              fullWidth={true}
+              contentStyle={{maxWidth: 362}}
+              
             >
-              <DialogContent onClose={handleClose} style={{marginTop:5}}>
-              <div className={classes.popUp}>
-                <BookingForm
+              <div className={classes.popUp} onClose={handleClose} >
+                <BookingForm 
+                  width={100}
                   customForm="extraTransfer"
                   details={details}
                   handleClose={handleExtraClose}
@@ -463,7 +464,6 @@ function Payment() {
                   submitData={submitData}
                 />
               </div>
-              </DialogContent>
             </Dialog>
           </Grid>
           <Grid item md={6} container>

@@ -14,8 +14,7 @@ import AirplanemodeActiveOutlinedIcon from '@material-ui/icons/AirplanemodeActiv
 import CommuteOutlinedIcon from '@material-ui/icons/CommuteOutlined';
 import { submitFlightData } from "../../store/actions/flightActions";
 import mainImage from "../../assets/mainImage.png";
-
-
+import '../style.css';
 class HomePage extends Component {
   state = {
     TripDetails: {
@@ -30,7 +29,9 @@ class HomePage extends Component {
       Passengers: 0,
       Luggages: 0,
     },
-    isLoding : false
+    isLoding : false,
+    selectedFrom:false,
+    selectedTo :false
   };
 
   handleDateChange = (date) => {
@@ -97,10 +98,8 @@ class HomePage extends Component {
   };
 
   fetchLocationIcon = (location) => {
-    console.log(location);
     let locationIcon;
     const locationArr = location.split(" ").map((loc) => loc.toLowerCase());
-    console.log(locationArr);
 
     if (locationArr.indexOf("airport") > -1) {
       locationIcon = <img src={Airport} alt="icon" style={{ width: "100%" }} />;
@@ -109,9 +108,37 @@ class HomePage extends Component {
     } else {
       locationIcon = <img src={Rent} alt="icon" style={{ width: "100%" }} />;
     }
-    return <div style={{ width: "20px", height: "20px", marginRight: "10px" }}>{locationIcon}</div>;
+    return <div style={{ width: "20px", height: "20px", marginRight: "10px" }} >{locationIcon}</div>;
   };
 
+  fetchLocationIcon1 = (location) => {
+    let locationIcon;
+    const locationArr = location.split(" ").map((loc) => loc.toLowerCase());
+
+    if (locationArr.indexOf("airport") > -1) {
+      locationIcon = <img src={Airport} alt="icon" className={this.props.classes.imageSize} />;
+    } else if (locationArr.indexOf("point_of_interest") > -1) {
+      locationIcon = <img src={Train} alt="icon" className={this.props.classes.imageSize} />;
+    } else {
+      locationIcon = <img src={Rent} alt="icon" className={this.props.classes.imageSize}/>;
+    }
+    return <div  className={this.props.classes.IconFirst} >{locationIcon}</div>;
+  };
+
+  fetchLocationIcon2 = (location) => {
+    let locationIcon;
+    const locationArr = location.split(" ").map((loc) => loc.toLowerCase());
+
+    if (locationArr.indexOf("airport") > -1) {
+      locationIcon = <img src={Airport} alt="icon" className={this.props.classes.imageSize}/>;
+    } else if (locationArr.indexOf("point_of_interest") > -1) {
+      locationIcon = <img src={Train} alt="icon" className={this.props.classes.imageSize}/>;
+    } else {
+      locationIcon = <img src={Rent} alt="icon" className={this.props.classes.imageSize}/>;
+    }
+    return <div className={this.props.classes.IconSecond}>{locationIcon}</div>;
+  };
+  
   handlePlaceFromChange = (Address) => {
     const TripDetails = this.state.TripDetails;
     TripDetails["From"] = Address;
@@ -119,6 +146,7 @@ class HomePage extends Component {
     TripDetails["FromLongitude"] = null;
     this.setState({
       TripDetails,
+      selectedFrom:true
     });
   };
 
@@ -161,8 +189,10 @@ class HomePage extends Component {
         TripDetails["ToLatitude"] = lat;
         TripDetails["ToLongitude"] = lng;
         this.setState({
+          selectedTo:true,
           TripDetails,
           isGeocoding: false,
+          
         });
       })
       .catch((error) => console.error("Error", error));
@@ -204,6 +234,11 @@ class HomePage extends Component {
               handlePlaceFromSelect={this.handlePlaceFromSelect}
               handlePlaceToChange={this.handlePlaceToChange}
               handlePlaceToSelect={this.handlePlaceToSelect}
+              fetchLocationIcon1 = {this.fetchLocationIcon1}
+              fetchLocationIcon2= {this.fetchLocationIcon2}
+              selectedFrom = {this.state.selectedFrom}
+              selectedTo={this.state.selectedTo}
+              TripDetails={this.state.TripDetails}
               from={From}
               to={To}
               time={Time}

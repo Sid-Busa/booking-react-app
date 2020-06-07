@@ -143,5 +143,28 @@ export const Style = (theme) => ({
     ['@media (max-width:960px)']: { // eslint-disable-line no-useless-computed-key
       display:'none'
     }
+  },
+  imageSize:{
+    width:"20px"
+  },
+  IconFirst:{
+    width: "20px", 
+    height: "20px", 
+    marginRight: "10px",
+    ['@media (max-width:960px)']: { // eslint-disable-line no-useless-computed-key
+      position:"absolute",
+      top:"10px",
+      left:'-8px'
+    }
+  },
+  IconSecond:{
+  width: "20px", 
+  height: "20px", 
+  marginRight: "10px",
+    ['@media (max-width:960px)']: { // eslint-disable-line no-useless-computed-key
+      position:"absolute",
+      top:"12px",
+      left:'-8px',
+    }
   }
 });

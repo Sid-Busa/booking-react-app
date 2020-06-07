@@ -19,9 +19,14 @@ const BookingForm = ({
   handlePlaceFromSelect,
   handlePlaceToChange,
   handlePlaceToSelect,
+  selectedFrom,
+  selectedTo,
+  TripDetails,
   from,
   to,
   fetchLocationIcon,
+  fetchLocationIcon1,
+  fetchLocationIcon2,
   selectedDate,
   handleDateChange,
   passengers,
@@ -41,11 +46,10 @@ const BookingForm = ({
   passengers = passengers || 0;
   luggages = luggages || 0;
   return (
-    <Card className={`${classes.bookTransferCard} ${customForm === "editForm" || customForm === "extraTransfer" ? classes.modal : null}`} >
+    <Card className={`${classes.bookTransferCard} ${customForm === "editForm" || customForm === "extraTransfer" ? classes.modal : null}`} style={{width:"362px"}} >
       <CardContent>
         {customForm === "editForm" || customForm === "extraTransfer" ? <CloseIcon className={classes.close} onClick={handleClose} /> : null}
         <Grid container justify="center">
-        
           <Grid item>
             <Typography variant="h6" className={classes.bookTransferCardTitle}>
               {customForm === "editForm" ? "Edit transfer" : customForm === "extraTransfer" ? "Add Extra Transfer" : "Book a transfer"}
@@ -55,7 +59,7 @@ const BookingForm = ({
             <FormControl className={classes.formControl} style={{ width: "100%" }}>
               <Grid container>
                 <Grid item md={1} container alignItems="center" justify="center">
-                  <RadioButtonUncheckedIcon style={{ fontSize: "10px" }} className={classes.iconForCheck1}/>
+                  {(selectedFrom && selectedTo) ? fetchLocationIcon1('india') : <RadioButtonUncheckedIcon style={{ fontSize: "10px",paddingLeft:'0px' }} className={classes.iconForCheck1}/>}                 
                 </Grid>
                 <Grid item md={11} container alignItems="center">
                   <AutoCompletePlaces
@@ -70,7 +74,7 @@ const BookingForm = ({
             <FormControl className={classes.formControl} style={{ width: "100%" }}>
               <Grid container>
                 <Grid item md={1} container alignItems="center" justify="center">
-                  <LocationOnOutlinedIcon style={{ fontSize: "20px" }} className={classes.iconForCheck2}/>
+                {(selectedFrom && selectedTo) ? fetchLocationIcon2('india') :<LocationOnOutlinedIcon style={{ fontSize: "20px" }} className={classes.iconForCheck2}/>}                 
                 </Grid>
                 <Grid item md={11} container alignItems="center">
                   <AutoCompletePlaces

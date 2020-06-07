@@ -15,7 +15,6 @@ const AutoCompletePlaces = ({ classes, address, handlePlaceChange, handlePlaceSe
                 placeholder: "From (airport, port, address)",
               })}
               id="location"
-              fullWidth
               className={classes.eventField}
               variant="outlined"
               InputLabelProps={{
