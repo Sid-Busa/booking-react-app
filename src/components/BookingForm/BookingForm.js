@@ -59,7 +59,7 @@ const BookingForm = ({
             <FormControl className={classes.formControl} style={{ width: "100%" }}>
               <Grid container>
                 <Grid item md={1} container alignItems="center" justify="center">
-                  {(selectedFrom && selectedTo) ? fetchLocationIcon1('india') : <RadioButtonUncheckedIcon style={{ fontSize: "10px",paddingLeft:'0px' }} className={classes.iconForCheck1}/>}                 
+                  {(selectedFrom && selectedTo) ? fetchLocationIcon1(TripDetails.From) : <RadioButtonUncheckedIcon style={{ fontSize: "10px",paddingLeft:'0px' }} className={classes.iconForCheck1}/>}                 
                 </Grid>
                 <Grid item md={11} container alignItems="center">
                   <AutoCompletePlaces
@@ -74,7 +74,7 @@ const BookingForm = ({
             <FormControl className={classes.formControl} style={{ width: "100%" }}>
               <Grid container>
                 <Grid item md={1} container alignItems="center" justify="center">
-                {(selectedFrom && selectedTo) ? fetchLocationIcon2('india') :<LocationOnOutlinedIcon style={{ fontSize: "20px" }} className={classes.iconForCheck2}/>}                 
+                {(selectedFrom && selectedTo) ? fetchLocationIcon2(TripDetails.To) :<LocationOnOutlinedIcon style={{ fontSize: "20px" }} className={classes.iconForCheck2}/>}                 
                 </Grid>
                 <Grid item md={11} container alignItems="center">
                   <AutoCompletePlaces

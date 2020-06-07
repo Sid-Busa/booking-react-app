@@ -114,11 +114,15 @@ class HomePage extends Component {
   fetchLocationIcon1 = (location) => {
     let locationIcon;
     const locationArr = location.split(" ").map((loc) => loc.toLowerCase());
-
+    
     if (locationArr.indexOf("airport") > -1) {
       locationIcon = <img src={Airport} alt="icon" className={this.props.classes.imageSize} />;
-    } else if (locationArr.indexOf("point_of_interest") > -1) {
+    } else if (locationArr.indexOf("train,") > -1) {
       locationIcon = <img src={Train} alt="icon" className={this.props.classes.imageSize} />;
+    }  else if(locationArr.indexOf("train") > -1){
+      locationIcon = <img src={Train} alt="icon" className={this.props.classes.imageSize}/>;
+    } else if(locationArr.indexOf("port") > -1){
+      locationIcon = <img src={Port} alt="icon" className={this.props.classes.imageSize}/>;
     } else {
       locationIcon = <img src={Rent} alt="icon" className={this.props.classes.imageSize}/>;
     }
@@ -128,11 +132,15 @@ class HomePage extends Component {
   fetchLocationIcon2 = (location) => {
     let locationIcon;
     const locationArr = location.split(" ").map((loc) => loc.toLowerCase());
-
+  
     if (locationArr.indexOf("airport") > -1) {
       locationIcon = <img src={Airport} alt="icon" className={this.props.classes.imageSize}/>;
-    } else if (locationArr.indexOf("point_of_interest") > -1) {
+    } else if (locationArr.indexOf("train,") > -1) {
       locationIcon = <img src={Train} alt="icon" className={this.props.classes.imageSize}/>;
+    } else if(locationArr.indexOf("train") > -1){
+      locationIcon = <img src={Train} alt="icon" className={this.props.classes.imageSize}/>;
+    } else if(locationArr.indexOf("port") > -1){
+      locationIcon = <img src={Port} alt="icon" className={this.props.classes.imageSize}/>;
     } else {
       locationIcon = <img src={Rent} alt="icon" className={this.props.classes.imageSize}/>;
     }
